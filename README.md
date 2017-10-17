@@ -56,9 +56,10 @@ The file structure in Wordpress projects looks like this:
     - **themes**
       - **your-theme**
         - **dist** - dist folder where CSS, JS and assets files are built
-          - **img** - This folder contains all the images
-          - **js** - This folder contains all JavaScripts files
-          - **fonts** - This folder contains all the fonts
+          - **assets** - Images, js and fonts
+            - **img** - This folder contains all the images
+            - **js** - This folder contains all JavaScripts files
+            - **fonts** - This folder contains all the fonts
           - **styles** - This folder contains all the global styles
             - `style.scss` - Main file where other stylesheets are imported
             - **settings** – Config, font, colors definitions...
