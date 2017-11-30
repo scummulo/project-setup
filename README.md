@@ -1,6 +1,88 @@
-## Project structure
+## Static project
 
-### Angular projects
+### Project structure
+The file structure in static projects looks like this:
+
+  - `index.html`
+  - **assets**
+    - **css** - css compiles
+    - **scss** - scss files
+
+### Gulp configuration
+
+```javascript
+// ******************** Variables
+// Dependencies
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var newer = require('gulp-newer');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var uncss = require('gulp-uncss');
+var plumber = require('gulp-plumber');
+var notify = require('gulp-notify');
+var browserSync = require('browser-sync');
+
+// Paths
+var IN = {
+  sass: 'assets/scss/*'
+}
+
+var OUT = {
+  css: 'assets/css/'
+}
+
+// Error
+function customPlumber(errTitle) {
+  return plumber({
+    errorHandler: notify.onError({
+          // Customizing error title
+          title: "Error running " + errTitle || "Error running Gulp"
+        })
+    });
+}
+
+// ******************** Tasks
+// Sass
+gulp.task('sass', function() {
+  return gulp.src(IN.sass + '*')
+    .pipe(newer(OUT.css + 'grid.css'))
+    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+    .pipe(concat('grid.css', {newLine: ''}))
+    .pipe(gulp.dest(OUT.css));
+});
+
+// Browser-sync
+gulp.task('browserSync', ['sass'], function() {
+  browserSync.init([OUT.css + '*', '*.html'], {
+    port: 8888,
+    server: {
+        baseDir: "./"
+    }
+  })
+});
+
+// Watch
+gulp.task('watch', ['browserSync'], function() {
+  gulp.watch([IN.sass + '*.scss'], ['sass']);
+  gulp.watch( '*.html' ).on( 'change', function( file ) {
+    browserSync.reload();
+  });
+})
+
+// Default
+gulp.task('default', ['watch']);
+```
+
+## Angular project
+
+### Create project
+Type this in the terminal to create an Angular project with Angular Cli.
+
+- **ng new projectName --style="scss"**
+
+### Project structure
 The file structure in Angular projects looks like this:
 
 - **e2e** - End-to-end tests
@@ -48,7 +130,9 @@ The file structure in Angular projects looks like this:
 
 
 
-### WordPress projects
+## Wordpress project
+
+### Project structure
 The file structure in Wordpress projects looks like this:
 
 - **wp** - WordPress installation
@@ -76,3 +160,92 @@ The file structure in Wordpress projects looks like this:
   - **wp-admin**
   - **wp-includes**
   - `wp-config.php`
+
+### Gulp configuration
+
+```javascript
+// ******************** Variables
+// Dependencies
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var newer = require('gulp-newer');
+var cache = require('gulp-cache');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var uncss = require('gulp-uncss');
+var plumber = require('gulp-plumber');
+var notify = require('gulp-notify');
+var browserSync = require('browser-sync');
+
+// ******************** Change this
+// Variables
+var themeName = 'themeNameHere';
+var serverAlias = 'http://localhost:8888/';
+
+// Paths
+var IN = {
+  js: 'wp-content/themes/' + themeName + '/dist/assets/js/',
+  sass: 'wp-content/themes/' + themeName + '/dist/styles/*'
+}
+
+var OUT = {
+  js: 'wp-content/themes/' + themeName + '/dist/assets/js/',
+  css: 'wp-content/themes/' + themeName + '/'
+}
+
+// Error
+function customPlumber(errTitle) {
+  return plumber({
+    errorHandler: notify.onError({
+          // Customizing error title
+          title: "Error running " + errTitle || "Error running Gulp"
+        })
+    });
+}
+
+// ******************** Tasks
+// Sass
+gulp.task('sass', function() {
+  return gulp.src(IN.sass + 'style.scss')
+    .pipe(autoprefixer())
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(concat('style.css', {newLine: ''}))
+    .pipe(gulp.dest(OUT.css));
+});
+
+// Scripts
+gulp.task('scripts', function() {
+  return gulp.src(IN.js + 'custom.js')
+    .pipe(customPlumber('Scripts'))
+    .pipe(newer(OUT.js + 'custom.min.js'))
+    .pipe(concat('custom.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(OUT.js));
+});
+
+// Cache
+gulp.task('cache', function () {
+  return cache.clearAll();
+});
+
+// Browser-sync
+gulp.task('browserSync', ['sass', 'scripts', 'cache'], function() {
+  browserSync.init([OUT.css + '*', IN.sass + '/*', OUT.js + '*', './**/*.php'], {
+    proxy: serverAlias,
+    port: 8080
+  })
+});
+
+// Watch
+gulp.task('watch', ['browserSync'], function() {
+  gulp.watch([IN.sass + '/*.scss'], ['sass']);
+  gulp.watch([IN.js + '*.js'], ['scripts']);
+  gulp.watch( './**/*.php' ).on( 'change', function( file ) {
+    browserSync.reload();
+  });
+})
+
+// Default
+gulp.task('default', ['watch']);
+```
