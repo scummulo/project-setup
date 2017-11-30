@@ -1,4 +1,4 @@
-[Wordpress project](##Wordpress-project)
+[Wordpress project](#Wordpress-project)
 
 ## Static project
 
