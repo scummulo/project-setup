@@ -114,7 +114,7 @@ The file structure in Angular projects looks like this:
     - **generic** – Reset and/or normalize styles
     - **elements** – Basic HTML elements (H1, tables, lists, forms, links... )
     - **objects** – Grid, containers, media and animations
-    - **components** - Custom component
+    - **components** - Specific UI components
     - **trumps** – Overrides
   - `favicon.ico`
   - `index.html`
