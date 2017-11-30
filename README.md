@@ -1,4 +1,4 @@
-## Project
+# Project
 
 - [Static project](#static-project)
 - [Angular project](#angular-project)
