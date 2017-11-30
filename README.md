@@ -1,8 +1,8 @@
 ## Project
 
-[Static project](#static-project)
-[Angular project](#angular-project)
-[Wordpress project](#wordpress-project)
+- [Static project](#static-project)
+- [Angular project](#angular-project)
+- [Wordpress project](#wordpress-project)
 
 ## Static project
 
