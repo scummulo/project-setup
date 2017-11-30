@@ -88,6 +88,11 @@ Type this in the terminal to create an Angular project with Angular Cli.
 
 - **ng new projectName --style="scss"**
 
+### Generate component / directive / guard / interface / module / pipe / service
+Type this in the terminal to generate component / directive / guard / interface / module / pipe / service.
+
+- **ng g c/d/g/i/m/p/s folderDestination --spec="false"**
+
 ### Project structure
 The file structure in Angular projects looks like this:
 
@@ -98,6 +103,11 @@ The file structure in Angular projects looks like this:
     - **components** - Components folder
       - **common** - Commom components
       - **custom** - Custom components
+    - **services** - Services folder
+    - **pipes** - Pipes folder
+    - **directives** - Directives folder
+    - **models** - Models folder
+    - **guards** - Guards folder
     - `app.component.html` - It is the root component of what will become a tree of nested components as the application evolves
     - `app.component.ts`
     - `app.module.ts` - The root module that tells Angular how to assemble the application
