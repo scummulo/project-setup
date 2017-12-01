@@ -16,6 +16,10 @@ The file structure in static projects looks like this:
 
 ### Gulp configuration
 
+#### Package dependencies
+
+npm install --save-dev browser-sync, gulp, gulp-autoprefixer, gulp-cache, gulp-concat, gulp-newer, gulp-notify, gulp-plumber, gulp-plumber-notify, gulp-sass, gulp-uglify, gulp-uncss
+
 ```javascript
 // ******************** Variables
 // Dependencies
@@ -178,6 +182,10 @@ The file structure in Wordpress projects looks like this:
   - `wp-config.php`
 
 ### Gulp configuration
+
+#### Package dependencies
+
+npm install --save-dev browser-sync, gulp, gulp-autoprefixer, gulp-cache, gulp-concat, gulp-newer, gulp-notify, gulp-plumber, gulp-plumber-notify, gulp-sass, gulp-uglify, gulp-uncss
 
 ```javascript
 // ******************** Variables
