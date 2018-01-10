@@ -20,6 +20,8 @@ The file structure in static projects looks like this:
 
 npm install --save-dev browser-sync, gulp, gulp-autoprefixer, gulp-cache, gulp-concat, gulp-newer, gulp-notify, gulp-plumber, gulp-plumber-notify, gulp-sass, gulp-uglify, gulp-uncss
 
+Create gulpfile.js with this code:
+
 ```javascript
 // ******************** Variables
 // Dependencies
@@ -163,9 +165,11 @@ The file structure in Wordpress projects looks like this:
           - **assets** - Images, js and fonts
             - **img** - This folder contains all the images
             - **js** - This folder contains all JavaScripts files
+              - `custom.min.js` - Main file where all JavaScript files are compress
+              - **static** - External libraries
             - **fonts** - This folder contains all the fonts
           - **styles** - This folder contains all the global styles
-            - `style.scss` - Main file where other stylesheets are imported
+            - `style.scss` - Main file where all stylesheets are imported
             - **settings** – Config, font, colors definitions...
             - **tools** – Mixins and functions
             - **generic** – Reset and/or normalize styles
@@ -186,6 +190,8 @@ The file structure in Wordpress projects looks like this:
 #### Package dependencies
 
 npm install --save-dev browser-sync, gulp, gulp-autoprefixer, gulp-cache, gulp-concat, gulp-newer, gulp-notify, gulp-plumber, gulp-plumber-notify, gulp-sass, gulp-uglify, gulp-uncss
+
+Create gulpfile.js with this code:
 
 ```javascript
 // ******************** Variables
