@@ -112,7 +112,8 @@ The file structure in Angular projects looks like this:
       - **services** - Singleton services
     - **shared** -  Items that will be re-used and referenced by the components declared in views folder
         - **components**
-        - **views**
+        - **directives**
+        - **pipes**
       - `shared.module.ts`
     - **views**
       - **view1**
