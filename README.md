@@ -107,7 +107,7 @@ The file structure in Angular projects looks like this:
 - **src** - Development is done here. All Angular components, templates, styles, images, and anything else your app needs go here
   - **app** - static asset files (images, videos, fonts, etc.) - everything from this directory will be copied to dist folder
     - **components** - Components folder
-      - **common** - Commom components
+      - **common** - Common components
       - **custom** - Custom components
     - **services** - Services folder
     - **pipes** - Pipes folder
