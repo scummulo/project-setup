@@ -110,6 +110,7 @@ The file structure in Angular projects looks like this:
       - **constants**
       - **models**
       - **services** - Singleton services
+      - `core.module.ts`
     - **shared** -  Items that will be re-used and referenced by the components declared in views folder
         - **components**
         - **directives**
