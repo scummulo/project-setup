@@ -106,26 +106,25 @@ The file structure in Angular projects looks like this:
 - **node_modules** - Third party modules listed in package.json
 - **src** - Development is done here. All Angular components, templates, styles, images, and anything else your app needs go here
   - **app** - static asset files (images, videos, fonts, etc.) - everything from this directory will be copied to dist folder
-    - **components** - Components folder
-      - **core**
-        - **constants**
-        - **models**
-        - **services** - Singleton services
-      - **shared** -  Items that will be re-used and referenced by the components declared in views folder
-          - **components**
-          - **views**
-        - `shared.module.ts`
-      - **views**
-        - **view1**
-          - **list**
-            - `view1-list.component.html`
-            - `view1-list.component.scss`
-            - `view1-list.component.ts`
-          - **detail**
-            - `view1-detail.component.html`
-            - `view1-detail.component.scss`
-            - `view1-detail.component.ts`
-        - `views.module.ts`
+    - **core**
+      - **constants**
+      - **models**
+      - **services** - Singleton services
+    - **shared** -  Items that will be re-used and referenced by the components declared in views folder
+        - **components**
+        - **views**
+      - `shared.module.ts`
+    - **views**
+      - **view1**
+        - **list**
+          - `view1-list.component.html`
+          - `view1-list.component.scss`
+          - `view1-list.component.ts`
+        - **detail**
+          - `view1-detail.component.html`
+          - `view1-detail.component.scss`
+          - `view1-detail.component.ts`
+      - `views.module.ts`
     - `app.component.html` - It is the root component of what will become a tree of nested components as the application evolves
     - `app.component.ts`
     - `app.module.ts` - The root module that tells Angular how to assemble the application
