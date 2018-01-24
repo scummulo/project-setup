@@ -105,7 +105,7 @@ The file structure in Angular projects looks like this:
 - **e2e** - End-to-end tests
 - **node_modules** - Third party modules listed in package.json
 - **src** - Development is done here. All Angular components, templates, styles, images, and anything else your app needs go here
-  - **app** - static asset files (images, videos, fonts, etc.) - everything from this directory will be copied to dist folder
+  - **app**
     - **core**
       - **constants**
       - **models**
