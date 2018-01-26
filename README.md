@@ -108,6 +108,8 @@ The file structure in Angular projects looks like this:
   - **app**
     - **core**
       - **constants**
+      - **guards**
+      - **messages**
       - **models**
       - **services** - Singleton services
       - `core.module.ts`
@@ -115,6 +117,7 @@ The file structure in Angular projects looks like this:
         - **components**
         - **directives**
         - **pipes**
+        - **utils**
       - `shared.module.ts`
     - **views**
       - **view1**
@@ -122,10 +125,12 @@ The file structure in Angular projects looks like this:
           - `view1-list.component.html`
           - `view1-list.component.scss`
           - `view1-list.component.ts`
+          - `view1-list.service.ts`
         - **detail**
           - `view1-detail.component.html`
           - `view1-detail.component.scss`
           - `view1-detail.component.ts`
+          - `view1-detail.service.ts`
       - `views.module.ts`
     - `app.component.html` - It is the root component of what will become a tree of nested components as the application evolves
     - `app.component.ts`
