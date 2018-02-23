@@ -23,6 +23,7 @@ The file structure in static projects looks like this:
     - **components** - Specific UI components
     - **trumps** – Overrides
   - **views**
+  - `gulpfile.js`
   - `index.html`
 
 ### Gulp configuration
