@@ -9,16 +9,27 @@
 ### Project structure
 The file structure in static projects looks like this:
 
-  - `index.html`
   - **assets**
-    - **css** - css compiles
-    - **scss** - scss files
+    - **fonts** -
+    - **img** -
+    - **js** -
+  - **styles**
+    - `style.scss` - Main file where all stylesheets are imported
+    - **settings** – Config, font, colors definitions...
+    - **tools** – Mixins and functions
+    - **generic** – Reset and/or normalize styles
+    - **elements** – Basic HTML elements (H1, tables, lists, forms, links... )
+    - **objects** – Grid, containers, media and animations
+    - **components** - Specific UI components
+    - **trumps** – Overrides
+  - **views**
+  - `index.html`
 
 ### Gulp configuration
 
 #### Package dependencies
 
-npm install --save-dev browser-sync, gulp, gulp-autoprefixer, gulp-cache, gulp-concat, gulp-newer, gulp-notify, gulp-plumber, gulp-plumber-notify, gulp-sass, gulp-uglify, gulp-uncss
+npm install --save-dev browser-sync && npm install --save-dev gulp && npm install --save-dev gulp-autoprefixer && npm install --save-dev gulp-cache && npm install --save-dev gulp-concat && npm install --save-dev gulp-newer && npm install --save-dev gulp-notify && npm install --save-dev gulp-plumber && npm install --save-dev gulp-plumber-notify && npm install --save-dev gulp-sass && npm install --save-dev gulp-uglify && npm install --save-dev gulp-uncss
 
 Create gulpfile.js with this code:
 
