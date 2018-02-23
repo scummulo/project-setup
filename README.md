@@ -35,12 +35,12 @@ npm install --save-dev browser-sync && npm install --save-dev gulp && npm instal
 Create gulpfile.js with this code:
 
 ```javascript
-// ******************** Variables
 // Dependencies
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var newer = require('gulp-newer');
+var cache = require('gulp-cache');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var uncss = require('gulp-uncss');
@@ -50,11 +50,13 @@ var browserSync = require('browser-sync');
 
 // Paths
 var IN = {
-  sass: 'assets/scss/*'
+  js: './assets/js/',
+  sass: './styles/*'
 }
 
 var OUT = {
-  css: 'assets/css/'
+  js: './',
+  css: './'
 }
 
 // Error
@@ -70,16 +72,30 @@ function customPlumber(errTitle) {
 // ******************** Tasks
 // Sass
 gulp.task('sass', function() {
-  return gulp.src(IN.sass + '*')
-    .pipe(newer(OUT.css + 'grid.css'))
-    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-    .pipe(concat('grid.css', {newLine: ''}))
+  return gulp.src(IN.sass + 'style.scss')
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(concat('style.css', {newLine: ''}))
     .pipe(gulp.dest(OUT.css));
 });
 
+// Scripts
+gulp.task('scripts', function() {
+  return gulp.src(IN.js + '*')
+    .pipe(customPlumber('Scripts'))
+    .pipe(newer(OUT.js + 'custom.min.js'))
+    .pipe(concat('custom.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(OUT.js));
+});
+
+// Cache
+gulp.task('cache', function () {
+  return cache.clearAll();
+});
+
 // Browser-sync
-gulp.task('browserSync', ['sass'], function() {
-  browserSync.init([OUT.css + '*', '*.html'], {
+gulp.task('browserSync', ['sass', 'scripts', 'cache'], function() {
+  browserSync.init([OUT.css + '*', IN.sass + '/*', OUT.js + '*', './*.html'], {
     port: 8888,
     server: {
         baseDir: "./"
@@ -89,14 +105,16 @@ gulp.task('browserSync', ['sass'], function() {
 
 // Watch
 gulp.task('watch', ['browserSync'], function() {
-  gulp.watch([IN.sass + '*.scss'], ['sass']);
-  gulp.watch( '*.html' ).on( 'change', function( file ) {
+  gulp.watch([IN.sass + '/*.scss'], ['sass']);
+  gulp.watch([IN.js + '*.js'], ['scripts']);
+  gulp.watch( './*.html' ).on( 'change', function( file ) {
     browserSync.reload();
   });
 })
 
 // Default
 gulp.task('default', ['watch']);
+
 ```
 
 ## Angular project
