@@ -35,6 +35,7 @@ npm install --save-dev browser-sync && npm install --save-dev gulp && npm instal
 Create gulpfile.js with this code:
 
 ```javascript
+// ******************** Variables
 // Dependencies
 var gulp = require('gulp');
 var sass = require('gulp-sass');
