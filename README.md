@@ -10,9 +10,9 @@
 The file structure in static projects looks like this:
 
   - **assets**
-    - **fonts** -
-    - **img** -
-    - **js** -
+    - **fonts**
+    - **img**
+    - **js**
   - **styles**
     - `style.scss` - Main file where all stylesheets are imported
     - **settings** – Config, font, colors definitions...
