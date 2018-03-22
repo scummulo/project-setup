@@ -143,7 +143,6 @@ The file structure in Angular projects looks like this:
       - **messages**
       - **models**
       - **utils**
-      - `core.module.ts`
     - **shared** -  Items that will be re-used and referenced by the components declared in views folder
         - **components**
         - **directives**
